@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.unifacisa.lsi.disciplina.entities.Disciplina;
 import br.com.unifacisa.lsi.disciplina.repositories.DisciplinaRepository;
+import br.com.unifacisa.lsi.disciplina.service.DisciplinaService;
 
 @RestController
 @RequestMapping("/professor")
@@ -22,6 +23,9 @@ public class DisciplinaController {
 
 	@Autowired
 	private DisciplinaRepository repository;
+	
+	@Autowired
+	private DisciplinaService service;
 
 	@GetMapping
 	private ResponseEntity<List<Disciplina>> getAll() {
@@ -37,16 +41,17 @@ public class DisciplinaController {
 	
 	@PostMapping
 	private ResponseEntity<Disciplina> save(@RequestBody Disciplina obj ) {
-		return ResponseEntity.ok().body(repository.save(obj));
+		return service.save(obj);
 	}
 	
 	@PutMapping("/{id}")
 	private ResponseEntity<Disciplina> update(@PathVariable Long id,@RequestBody Disciplina obj) {
-		return ResponseEntity.ok().body(repository.save(obj));
+		obj.setId(id);
+		return service.save(obj);
 	}
 	
 	@DeleteMapping("/{id}")
-	private ResponseEntity<Disciplina> update(@PathVariable Long id) {
+	private ResponseEntity<Disciplina> delete(@PathVariable Long id) {
 		if (repository.existsById(id)) {
 			repository.deleteById(id);
 			return ResponseEntity.ok().build();

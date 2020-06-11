@@ -1,27 +1,21 @@
-package br.com.unifacisa.lsi.curso.entities;
+package br.com.unifacisa.lsi.aluno.dto;
 
 import java.util.List;
 
 import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public class CursoDTO {
 
-@Entity
-public class Curso {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private Integer codigo;
 
 	private String nome;
+	
+	private List<Integer> disciplinasId;
 
 	public Long getId() {
 		return id;
@@ -46,6 +40,15 @@ public class Curso {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public List<Integer> getDisciplinasId() {
+		return disciplinasId;
+	}
+
+	public void setDisciplinasId(List<Integer> disciplinasId) {
+		this.disciplinasId = disciplinasId;
+	}
+	
 	
 
 }

@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.unifacisa.lsi.matricula.entities.Matricula;
-import br.com.unifacisa.lsi.matricula.repositories.MatriculaRepository;
+import br.com.unifacisa.lsi.matricula.service.MatriculaService;
 
 @RestController
 @RequestMapping("/matricula")
 public class MatriculaController {
 	
 	@Autowired
-	private MatriculaRepository repository;
+	private MatriculaService service;
 	
 	@PostMapping
-	public ResponseEntity<Matricula> realizaMatricula(@RequestBody Matricula matricula) {
-		return ResponseEntity.ok(repository.save(matricula));
+	public ResponseEntity<Matricula> realizarMatricula(@RequestBody Matricula matricula) {
+		return service.realizarMatricula(matricula);
 	}
 
 }

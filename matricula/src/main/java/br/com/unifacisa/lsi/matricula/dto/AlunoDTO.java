@@ -1,19 +1,7 @@
-package br.com.unifacisa.lsi.aluno.entity;
+package br.com.unifacisa.lsi.matricula.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class AlunoDTO {
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-public class Aluno {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	private String nome;
@@ -21,6 +9,8 @@ public class Aluno {
 	private String cpf;
 	
 	private Long idcurso;
+	
+	
 
 	public Long getIdcurso() {
 		return idcurso;
@@ -53,6 +43,7 @@ public class Aluno {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
 	
 		
 }

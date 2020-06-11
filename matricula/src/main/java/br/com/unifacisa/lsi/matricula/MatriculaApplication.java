@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 public class MatriculaApplication {
 
 	@Bean
-	@LoadBalanced
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}

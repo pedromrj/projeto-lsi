@@ -1,8 +1,5 @@
-package br.com.unifacisa.lsi.curso.entities;
+package br.com.unifacisa.lsi.disciplina.dto;
 
-import java.util.List;
-
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,14 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-public class Curso {
+public class ProfessorDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	private Integer codigo;
 
 	private String nome;
 
@@ -31,14 +23,6 @@ public class Curso {
 		this.id = id;
 	}
 
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -46,6 +30,7 @@ public class Curso {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	
 
 }

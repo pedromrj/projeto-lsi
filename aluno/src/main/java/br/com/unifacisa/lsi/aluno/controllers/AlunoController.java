@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.unifacisa.lsi.aluno.entity.Aluno;
 import br.com.unifacisa.lsi.aluno.repositories.AlunoRepository;
+import br.com.unifacisa.lsi.aluno.service.AlunoService;
 
 @RestController
 @RequestMapping("/aluno")
 public class AlunoController {
+	
+	@Autowired
+	private AlunoService service;
 
 	@Autowired
 	private AlunoRepository repository;
@@ -37,16 +41,17 @@ public class AlunoController {
 	
 	@PostMapping
 	private ResponseEntity<Aluno> save(@RequestBody Aluno obj ) {
-		return ResponseEntity.ok().body(repository.save(obj));
+		return service.save(obj);
 	}
 	
 	@PutMapping("/{id}")
 	private ResponseEntity<Aluno> update(@PathVariable Long id,@RequestBody Aluno obj) {
-		return ResponseEntity.ok().body(repository.save(obj));
+		obj.setId(id);
+		return service.save(obj);
 	}
 	
 	@DeleteMapping("/{id}")
-	private ResponseEntity<Aluno> update(@PathVariable Long id) {
+	private ResponseEntity<Aluno> delete(@PathVariable Long id) {
 		if (repository.existsById(id)) {
 			repository.deleteById(id);
 			return ResponseEntity.ok().build();
