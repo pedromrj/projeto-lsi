@@ -18,7 +18,7 @@ import br.com.unifacisa.lsi.disciplina.repositories.DisciplinaRepository;
 import br.com.unifacisa.lsi.disciplina.service.DisciplinaService;
 
 @RestController
-@RequestMapping("/professor")
+@RequestMapping("/disciplina")
 public class DisciplinaController {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class DisciplinaController {
 	@GetMapping("/{id}")
 	private ResponseEntity<Disciplina> findOne(@PathVariable Long id) {
 		return repository.findById(id).map(
-				aluno -> ResponseEntity.ok().body(aluno))
+				disciplina -> ResponseEntity.ok().body(disciplina))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
